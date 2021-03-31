@@ -79,7 +79,7 @@ class Fib:
 
 class FibIter:
     '''
-    This is the iterator helper class for the Fib class.
+    This iss the iterator helper class for the Fib class.
     '''
 
     def __init__(self, n):
