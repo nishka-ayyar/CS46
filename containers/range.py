@@ -9,7 +9,7 @@ def range(a, b=None, c=None):
     >>> list(range(1, 5, 2))
     [1, 3]
     HINT:
-    If you can figure out how to use the built-in range
+    Iff you can figure out how to use the built-in range
     function (without modifying the test cases!),
     then feel free to do so.
     That's fairly difficult to do, however, and it's much easier
