@@ -54,9 +54,11 @@ class AVLTree(BST):
         '''
         if node is None:
             return True
-        left = AVLTree._is_avl_satisfied(node.left)
-        right = AVLTree._is_avl_satisfied(node.right)
-        return AVLTree._balance_factor(node) in [-1, 0, 1] and left and right
+        if AVLTree._balance_factor(node) not in [-1, 0, 1]:
+            return False
+        else:
+            return (AVLTree._is_avl_satisfied(node.left)) and\
+                   (AVLTree._is_avl_satisfied(node.right))
 
     @staticmethod
     def _left_rotate(node):
@@ -127,39 +129,15 @@ class AVLTree(BST):
         function for the BST,
         but it will also call the left and right rebalancing functions.
         '''
-        if not self.root:
+        if self.root is None:
             self.root = Node(value)
             return
         if value == self.root.value:
             return
         else:
-            self._insert(value, self.root)
-            if not self.is_avl_satisfied():
+            BST.insert(self, value)
+            while not self.is_avl_satisfied():
                 self.root = self.rebalance(self.root)
-                if not self.is_avl_satisfied():
-                    self.root = self.rebalance(self.root)
-            return
-
-    @staticmethod
-    def _insert(value, node):
-        '''
-        FIXME:
-        Implement this function.
-        '''
-        if node.value == value:
-            return
-        if value < node.value:
-            if node.left is None:
-                node.left = Node(value)
-                return
-            else:
-                return AVLTree._insert(value, node.left)
-        else:
-            if node.right is None:
-                node.right = Node(value)
-                return
-            else:
-                return AVLTree._insert(value, node.right)
 
     def rebalance(self, x):
         if x is None:
