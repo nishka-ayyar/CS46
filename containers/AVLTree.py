@@ -22,9 +22,7 @@ class AVLTree(BST):
         FIXME:
         Implement this function.
         '''
-        self.root = None
-        if xs:
-            self.insert_list(xs)
+        super().__init__(xs)
 
     def balance_factor(self):
         '''
